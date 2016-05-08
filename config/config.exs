@@ -1,5 +1,7 @@
 use Mix.Config
 
+# REVIEW not sure I want to call this `info`
+
 config :nerves_firmware, info: [
   id:         :stem,
   version:    Mix.Project.config[:version],
