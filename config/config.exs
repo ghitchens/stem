@@ -7,6 +7,12 @@ config :nerves_firmware, info: [
   version:    Mix.Project.config[:version],
   built_at:   :os.system_time(:seconds),
   author:     "Garth Hitchens <ghitchens@me.com>"
+
+  #product:    # product name
+  #description:  # description of product or firmware udpate
+  #platform   -- should this be target?
+  #architcture -- eg ar
+  #creation_date
 ]
 
 #import_config "#{Mix.Project.config[:target]}.exs"
