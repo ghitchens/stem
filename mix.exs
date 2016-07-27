@@ -1,32 +1,35 @@
 defmodule Stem.Mixfile do
   use Mix.Project
 
-  @target System.get_env("NERVES_TARGET") || "rpi2"
+  @target System.get_env("NERVES_TARGET") || "rpi"
 
   def project do
     [app: :stem,
-     version: "0.1.0",
-     archives: [nerves_bootstrap: "~> 0.1"],
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     target: @target,
-     deps_path: "deps/#{@target}",
-     build_path: "_build/#{@target}",
-# causes silent ignore of config.exs replaced with import_config there
-# config_path: "config/#{@target}/config.exs",
-     aliases: aliases,
-     deps: deps]
+      version: "0.2.0",
+      elixir: "~> 1.3",
+      archives: [nerves_bootstrap: "~> 0.1.3"],
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      target: @target,
+      deps_path: "deps/#{@target}",
+      build_path: "_build/#{@target}",
+      aliases: aliases(),
+      deps: deps() ++ system(@target)]
   end
 
-  def application do
-    [applications: [:nerves, :nerves_networking, :nerves_firmware, :logger], mod: {Stem, []}]
-  end
+  def application, do: [
+    mod: {Stem, []},
+    applications: [:nerves, :logger, :nerves_networking, :nerves_cell]
+  ]
 
   defp deps, do: [
-    {:nerves, github: "nerves-project/nerves", branch: "mix"},
+    {:nerves, "~> 0.3.0"},
     {:nerves_networking, github: "nerves-project/nerves_networking"},
-    {:nerves_firmware, github: "ghitchens/nerves_firmware"},
-    {:"nerves_system_#{@target}", github: "nerves-project/nerves_system_#{@target}"},
+    {:nerves_cell, github: "ghitchens/nerves_cell"}
+  ]
+
+  def system(target), do:  [
+     {:"nerves_system_#{target}", "~> 0.6"}
   ]
 
   # nerves build magic
