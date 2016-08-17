@@ -6,11 +6,10 @@ defmodule Stem.Mixfile do
 
   def project do
     [app: :stem,
-     version: "0.2.0-pre",
+     version: "0.2.1-pre",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps(),
 
      # App information
      product: "Generic Nerves Firmware",
@@ -26,21 +25,25 @@ defmodule Stem.Mixfile do
 
      # Nerves build setup
      aliases: aliases(),
-     archives: [nerves_bootstrap: "~> 0.1"],
+     archives: [nerves_bootstrap: "~> 0.1.3"],
      build_path: "_build/#{@target}",
-     deps_path: "deps/#{@target}"]
+     deps_path: "deps/#{@target}",
+     deps: deps() ++ system(@target)]
   end
 
-  def application do
-    [applications: [:nerves, :nerves_networking, :nerves_firmware, :logger], 
-     mod: {Stem, []}]
-  end
+  def application, do: [
+    mod: {Stem, []},
+    applications: [:nerves, :logger, :nerves_networking, :nerves_cell]
+  ]
 
   defp deps, do: [
-    {:nerves, github: "nerves-project/nerves", branch: "mix"},
+    {:nerves, "~> 0.3.0"},
     {:nerves_networking, github: "nerves-project/nerves_networking"},
-    {:nerves_firmware, github: "ghitchens/nerves_firmware"},
-    {:"nerves_system_#{@target}", github: "nerves-project/nerves_system_#{@target}"},
+    {:nerves_cell, github: "ghitchens/nerves_cell"}
+  ]
+
+  def system(target), do:  [
+     {:"nerves_system_#{target}", "~> 0.6"}
   ]
 
   def aliases, do: [
