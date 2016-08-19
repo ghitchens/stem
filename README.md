@@ -1,31 +1,37 @@
 # Stem
 
-A trivial application that does nothing, but can be updated remotely.
-Demonstrates configuration and dependencies for firmware updates.
+A trivial but useful Nerves application that does nothing in particular, but
+acts as a Nerves Cell, and thus can be discovered on a network, updated and
+managed remotely.
 
-## Building & updating (temporary hacky instructions):
+A device running Stem permits unrestricted uploading of other firmware,
+allowing it to be turned into another type of Nerves Cell. Get it? Stem Cell?
 
-    mix deps
-    mix firmware
-    mix firmware.burn
+In particular, it is useful to have a few uSD cards laying around with
+Stem on them, so that a device can be booted and discovered on a network,
+in preparation for pushing a more specific nerves application to the device
+over a LAN connection.
 
-Boot your firmware, then to udpate
+## Building and Burning a "Stem Cell"
 
-    mix clean
-    mix firmware        # has new build date
+Build your firmware:
 
-Now, if you have `curl` and know your device IP, you can update firmware:
+```bash
+mix deps
+mix firmware
+mix firmware.burn
+```
 
-    curl -v -T _images/rpi2/stem.fw "http://<ip>:8988/firmware" \
-    -H "Content-Type: application/x-firmware" -H "X-Reboot: true"`
+Boot firmware on your target device, and it should be on a network!
 
+## Interacting with the Stem Cell
 
+You can use the [cell-tool](http://github.com/nerves-project/cell-tool) CLI to manage the firmware, as follows:
+
+```bash
+cell list         # discover a cell
+cell push <fw>    # push firmware to the cell
+```
 ## How it works
 
-It just includes `:nerves_firmware` in deps and apps in `mix.exs`.  That
-module takes care of all the rest.   See [nerves_firmware](https://github.com/ghitchens/nerves_firmware) for more information.
-
-## WARNING!  Very Preliminary
-
-There are a nubmer of things not yet final here, including exact naming and
-format of firmware metadata.  This WILL change shortly.
+This is a pretty simple app, ust including `nerves_networking` and `nerves_cell` in deps, and having a few lines of intialization.  Most of the magic is actually in the mix.exs, as project metadata.

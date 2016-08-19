@@ -12,13 +12,13 @@ defmodule Stem.Mixfile do
      start_permanent: Mix.env == :prod,
 
      # App information
-     product: "Generic Nerves Firmware",
+     product: "Nerves Stem Firmware",
      descripton: """
-     Generic firmware for a Nerves device that implements the cell
+     Generic firmware for a Nerves device that implements the "Cell"
      protocol set, so it can be discovered, updated, and managed over a
      network connection.
      """,
-     author: "Garth Hitchens <ghitchens@me.com>",
+     author: "Nerves Project http://nerves-project.org",
      creation_date: (DateTime.utc_now |> DateTime.to_time),
      architecture: @architecture,
      target: @target,
