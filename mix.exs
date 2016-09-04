@@ -25,7 +25,7 @@ defmodule Stem.Mixfile do
 
      # Nerves build setup
      aliases: aliases(),
-     archives: [nerves_bootstrap: "~> 0.1.3"],
+     archives: [nerves_bootstrap: "~> 0.1"],
      build_path: "_build/#{@target}",
      deps_path: "deps/#{@target}",
      deps: deps() ++ system(@target)]
@@ -37,8 +37,8 @@ defmodule Stem.Mixfile do
   ]
 
   defp deps, do: [
-    {:nerves, "~> 0.3.0"},
-    {:nerves_networking, github: "nerves-project/nerves_networking"},
+    {:nerves, "~> 0.3"},
+    {:nerves_networking, "~> 0.6"},
     {:nerves_cell, github: "ghitchens/nerves_cell"}
   ]
 
