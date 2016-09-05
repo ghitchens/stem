@@ -19,7 +19,7 @@ defmodule Stem.Mixfile do
      network connection.
      """,
      author: "Nerves Project http://nerves-project.org",
-     creation_date: (DateTime.utc_now |> DateTime.to_time),
+     creation_date: DateTime.utc_now,
      architecture: @architecture,
      target: @target,
 

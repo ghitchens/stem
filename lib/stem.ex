@@ -11,6 +11,7 @@ defmodule Stem do
   @config  Application.get_env(:nerves, :project)
 
   def start(_type, _args) do
+    Logger.info "Nerves Stem Firmware, v#{@project[:version]} created #{@project[:creation_date] |> DateTime.to_iso8601}"
     Nerves.Networking.setup :eth0
     Nerves.Cell.setup
     {:ok, self}

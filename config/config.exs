@@ -1,4 +1,4 @@
 use Mix.Config
 
-config :nerves, :project, Mix.Project.config
+config :nerves_cell, Mix.Project.config
 
