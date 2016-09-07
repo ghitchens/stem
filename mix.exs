@@ -33,7 +33,7 @@ defmodule Stem.Mixfile do
 
   def application, do: [
     mod: {Stem, []},
-    applications: [:nerves, :logger, :nerves_networking, :nerves_cell]
+    applications: [:nerves, :logger, :nerves_networking, :nerves_cell, :logger_multicast_backend]
   ]
 
   defp deps, do: [
