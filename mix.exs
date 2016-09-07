@@ -6,7 +6,7 @@ defmodule Stem.Mixfile do
 
   def project do
     [app: :stem,
-     version: "0.2.1-pre",
+     version: "0.2.1-pre5",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -39,7 +39,8 @@ defmodule Stem.Mixfile do
   defp deps, do: [
     {:nerves, "~> 0.3"},
     {:nerves_networking, "~> 0.6"},
-    {:nerves_cell, github: "ghitchens/nerves_cell"}
+    {:nerves_cell, github: "ghitchens/nerves_cell"},
+    {:logger_multicast_backend, github: "ghitchens/logger_multicast_backend"}
   ]
 
   def system(target), do:  [
