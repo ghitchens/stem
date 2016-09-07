@@ -14,6 +14,13 @@ defmodule Stem do
     Logger.info "Nerves Stem Firmware, v#{@project[:version]} created #{@project[:creation_date] |> DateTime.to_iso8601}"
     Nerves.Networking.setup :eth0
     Nerves.Cell.setup
+    spawn fn -> heartbeat end
     {:ok, self}
+  end
+
+  def heartbeat do
+    Logger.info "Nerves Stem Firmware, v#{@project[:version]} created #{@project[:creation_date] |> DateTime.to_iso8601}"
+    :timer.sleep 1000
+    heartbeat
   end
 end
