@@ -6,7 +6,7 @@ defmodule Stem.Mixfile do
 
   def project do
     [app: :stem,
-     version: "0.2.1-pre5",
+     version: "0.2.1-pre-6f",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -19,6 +19,7 @@ defmodule Stem.Mixfile do
      network connection.
      """,
      author: "Nerves Project http://nerves-project.org",
+     tags: "development",
      creation_date: DateTime.utc_now,
      architecture: @architecture,
      target: @target,

@@ -9,7 +9,7 @@
   "jsx": {:hex, :jsx, "2.6.2", "213721e058da0587a4bce3cc8a00ff6684ced229c8f9223245c6ff2c88fbaa5a", [:mix, :rebar], []},
   "logger_multicast_backend": {:git, "https://github.com/ghitchens/logger_multicast_backend.git", "829a94cafd81d13a70fcca7b8f0d8006a7996e8b", []},
   "nerves": {:hex, :nerves, "0.3.4", "7de99513f2775633e2db00acbf7437c55bd132f19b7406814f50818702b381b5", [:mix], [{:exrm, "~> 1.0.6", [hex: :exrm, optional: false]}]},
-  "nerves_cell": {:git, "https://github.com/ghitchens/nerves_cell.git", "c7b56884a81998f2c6c6c7dd41973091c7050da4", []},
+  "nerves_cell": {:git, "https://github.com/ghitchens/nerves_cell.git", "61028b7ffece7c172a43ca7a32aa677bf3fcd47f", []},
   "nerves_firmware": {:git, "https://github.com/nerves-project/nerves_firmware.git", "241a12694bd3bc2b4df8cbb7e0f0beaeff075b1c", []},
   "nerves_firmware_http": {:git, "https://github.com/nerves-project/nerves_firmware_http.git", "cc2cb110b0587a482d454175916dc597d62c4bfa", []},
   "nerves_networking": {:hex, :nerves_networking, "0.6.0", "6de5fc53951d087c8c61ce4ba74b998313e628ff084cd02c9813eb63a79c647f", [:mix], []},
