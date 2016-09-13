@@ -20,7 +20,7 @@ defmodule Stem do
 
   def heartbeat do
     Logger.info "Nerves Stem Firmware, v#{@project[:version]} created #{@project[:creation_date] |> DateTime.to_iso8601}"
-    :timer.sleep 1000
+    :timer.sleep 5000
     heartbeat
   end
 end
